@@ -1,4 +1,6 @@
 import { People } from "@/data/people"
+import { IPerson } from "@/models/people"
+import { removeFavorite } from "@/redux/states"
 import { AppStore } from "@/redux/store"
 import { Delete } from "@mui/icons-material"
 import { Box, IconButton } from "@mui/material"
@@ -8,10 +10,10 @@ import { useDispatch, useSelector } from "react-redux"
 function Favorites () {
   const selectedPeople = useSelector((store: AppStore) => store.favorites)
 
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
   const handleRemove = (person: IPerson) => {
-      // dispatch(removeFavorite(people))
+      dispatch(removeFavorite(person))
     }
 
   const columns : GridColDef<(typeof People)[number]>[]= [
